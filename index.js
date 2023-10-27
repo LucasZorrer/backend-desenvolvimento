@@ -1,14 +1,6 @@
-const http = require("http");
+const express = require("express");
+const app = express()
 
-const host = 'localhost';
-const port = 8000;
-
-const requestListener = function(req, res) {
-    res.writeHead(200);
-    res.end("Hello World from Node.js HTTP Server");
-}
-
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
-});
+app.listen(6969, () => {
+    console.log("Server is running")
+})
