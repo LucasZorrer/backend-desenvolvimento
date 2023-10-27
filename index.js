@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const jwt = require('jsonwebtoken')
+const professoresController = require('./app/controllers/ProfessorController')
 
 app.use(express.json())
 
@@ -16,6 +17,12 @@ const posts = [
         title: 'Post 2'
     }
 ]
+
+
+app.get('/professor', professoresController.teste) 
+app.post('/professor/create', professoresController.createProfessor )
+app.put('/professor/{$id}' , professoresController.alterProfessor)
+app.delete('/professor/delete', professoresController.deleteProfessor)
 
 app.get('/posts', authenticateToken, (req, res) => {
     res.json(posts.filter(post => post.username === req.user.name))
