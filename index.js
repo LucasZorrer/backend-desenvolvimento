@@ -8,10 +8,10 @@ app.use(express.json());
 const professoresController = require("./app/controllers/ProfessorController");
 
 // CRUD DE PROFESSOR
-app.get("/professor", professoresController.teste);
+app.get("/professores", professoresController.listAll);
 app.post("/professor/create", professoresController.createProfessor);
-app.put("/professor/{$id}", professoresController.alterProfessor);
-app.delete("/professor/delete", professoresController.deleteProfessor);
+app.put("/professor/:id", professoresController.alterProfessor);
+app.delete("/professor/delete/:id", professoresController.deleteProfessor);
 
 // ROTAS GERAIS
 app.get("/", authenticateToken, (req, res) => {
