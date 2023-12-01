@@ -7,6 +7,7 @@ app.use(express.json());
 // IMPORTAÇÃO DAS CONTROLLERS
 const professoresController = require("./app/controllers/ProfessorController");
 const chefiasController = require("./app/controllers/ChefiaController");
+const disciplinasController = require("./app/controllers/DisciplinaController")
 
 // CRUD DE PROFESSOR
 app.get("/professores", professoresController.listAll);
@@ -16,9 +17,15 @@ app.delete("/professor/delete/:id", professoresController.deleteProfessor);
 
 //CRUD DE CHEFIAS
 app.get("/chefias", chefiasController.listAll);
-// app.post("/chefias/create", chefiasController.createChefia);
-// app.put("/chefias/:id", chefiasController.alterChefia);
-// app.delete("/chefias/delete/:id", chefiasController.deleteChefia);
+app.post("/chefia/create", chefiasController.createChefia);
+app.put("/chefias/:id", chefiasController.alterarChefia);
+app.delete("/chefia/delete/:id", chefiasController.deleteChefia);
+
+//CRUD DE DISCIPLINAS
+app.get("/disciplinas", disciplinasController.listAll);
+app.post("/disciplina/create", disciplinasController.createDisciplina);
+app.put("/disciplina/:id", disciplinasController.alterarDisciplina);
+app.delete("/disciplina/delete/:id", disciplinasController.deleteDisciplina);
 
 
 // ROTAS GERAIS
