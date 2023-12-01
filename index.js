@@ -8,6 +8,7 @@ app.use(express.json());
 const professoresController = require("./app/controllers/ProfessorController");
 const chefiasController = require("./app/controllers/ChefiaController");
 const disciplinasController = require("./app/controllers/DisciplinaController")
+const cursosController = require("./app/controllers/DisciplinaController")
 
 // CRUD DE PROFESSOR
 app.get("/professores", professoresController.listAll);
@@ -26,6 +27,12 @@ app.get("/disciplinas", disciplinasController.listAll);
 app.post("/disciplina/create", disciplinasController.createDisciplina);
 app.put("/disciplina/:id", disciplinasController.alterarDisciplina);
 app.delete("/disciplina/delete/:id", disciplinasController.deleteDisciplina);
+
+// CRUD DE CURSO
+app.get("/cursos", cursosController.listAll);
+app.post("/curso/create", cursosController.createCurso);
+// app.put("/curso/:id", cursosController.alterCurso);
+// app.delete("/curso/delete/:id", cursosController.deleteCurso);
 
 
 // ROTAS GERAIS
