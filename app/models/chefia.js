@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Chefia.init({
-    inicio: DataTypes.DATE
+    inicio: DataTypes.DATE,
+    fim: DataTypes.DATE,
+    nivel: DataTypes.STRING,
+    docente_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Chefia',
