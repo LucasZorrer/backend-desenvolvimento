@@ -36,7 +36,7 @@ const alterarDisciplina = () => {
             id:req.params.id,
         }
     })
-    res.json({success:true, deleteProfessor})
+    res.json({success:true, deleteDisciplina})
   };
 
 
