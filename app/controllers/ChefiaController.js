@@ -38,7 +38,7 @@ const createChefia = async (req, res) => {
     }
 };
 
-const alterarChefia = () => {
+const alterChefia = () => {
     console.log("alterando")
 }
 
@@ -55,6 +55,6 @@ const deleteChefia = async (req, res) => {
 module.exports = {
     listAll,
     createChefia,
-    alterarChefia,
+    alterChefia,
     deleteChefia,
 }

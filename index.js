@@ -19,13 +19,13 @@ app.delete("/professor/delete/:id", professoresController.deleteProfessor);
 //CRUD DE CHEFIAS
 app.get("/chefias", chefiasController.listAll);
 app.post("/chefia/create", chefiasController.createChefia);
-app.put("/chefia/:id", chefiasController.alterarChefia);
+app.put("/chefia/:id", chefiasController.alterChefia);
 app.delete("/chefia/delete/:id", chefiasController.deleteChefia);
 
 //CRUD DE DISCIPLINAS
 app.get("/disciplinas", disciplinasController.listAll);
 app.post("/disciplina/create", disciplinasController.createDisciplina);
-app.put("/disciplina/:id", disciplinasController.alterarDisciplina);
+app.put("/disciplina/:id", disciplinasController.alterDisciplina);
 app.delete("/disciplina/delete/:id", disciplinasController.deleteDisciplina);
 
 // CRUD DE CURSO

@@ -26,7 +26,7 @@ const createDisciplina = async (req, res) => {
     }
 };
 
-const alterarDisciplina = () => {
+const alterDisciplina = () => {
     console.log("alterando");
   };
   
@@ -43,6 +43,6 @@ const alterarDisciplina = () => {
 module.exports = {
     listAll,
     createDisciplina,
-    alterarDisciplina,
+    alterDisciplina,
     deleteDisciplina,
 }
