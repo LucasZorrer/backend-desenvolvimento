@@ -1,7 +1,6 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const { Docente } = require("../models");
-const res = require("express/lib/response");
 
 const listAll = async (req,res) => {
     const professores = await Docente.findAll()
