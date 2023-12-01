@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Ciclo_letivo.init({
-    ano: DataTypes.INTEGER
+    ano: DataTypes.INTEGER,
+    semestre: DataTypes.INTEGER,
+    inicio: DataTypes.DATE,
+    fim: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Ciclo_letivo',

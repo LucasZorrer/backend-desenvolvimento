@@ -28,7 +28,7 @@ const createChefia = async (req, res) => {
             nivel,
             docente_id,
         });
-        res.status(201).json({ success: true, chefia: createChefia });
+        res.status(201).json({ success: true, chefia: createdChefia });
     } catch (error) {
         res.status(201).json({
             success: false,

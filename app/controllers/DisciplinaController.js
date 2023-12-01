@@ -16,7 +16,7 @@ const createDisciplina = async (req, res) => {
         const createdDisciplina = await Disciplina.create({
             nome,
         });
-        res.status(201).json({ success: true, disciplina: createDisciplina });
+        res.status(201).json({ success: true, disciplina: createdDisciplina });
     } catch (error) {
         res.status(201).json({
             success: false,
