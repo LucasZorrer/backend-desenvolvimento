@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turma.init({
-    nome: DataTypes.STRING
+    nome: DataTypes.STRING,
+    curso_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Turma',
