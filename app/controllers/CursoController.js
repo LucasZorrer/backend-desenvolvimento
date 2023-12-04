@@ -25,7 +25,22 @@ const createCurso = async (req, res) => {
   }
 };
 
+const alterCurso = () => {
+  console.log("alterando");
+};
+
+const deleteCurso = async (req, res) => {
+  const deleteCurso = await Curso.destroy({
+      where: {
+          id:req.params.id,
+      }
+  })
+  res.json({success:true, deleteCurso})
+};
+
 module.exports = {
   createCurso,
   listAll,
+  alterCurso,
+  deleteCurso,
 };

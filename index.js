@@ -32,8 +32,8 @@ app.delete("/disciplina/delete/:id", disciplinasController.deleteDisciplina);
 // CRUD DE CURSO
 app.get("/cursos", cursosController.listAll);
 app.post("/curso/create", cursosController.createCurso);
-// app.put("/curso/:id", cursosController.alterCurso);
-// app.delete("/curso/delete/:id", cursosController.deleteCurso);
+app.put("/curso/:id", cursosController.alterCurso);
+app.delete("/curso/delete/:id", cursosController.deleteCurso);
 
 //CRUD DE CiCLOS LETIVOS
 app.get("/ciclos_letivos", ciclosletivosController.listAll);
