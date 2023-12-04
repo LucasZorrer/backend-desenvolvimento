@@ -14,10 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Coordenador.init({
-    inicio: DataTypes.DATE
+    inicio: DataTypes.DATE,
+    fim: DataTypes.DATE,
+    curso_id: DataTypes.INTEGER,
+    docente_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Coordenador',
+    tableName: 'coordenadores'
   });
   return Coordenador;
 };

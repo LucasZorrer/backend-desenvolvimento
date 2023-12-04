@@ -11,6 +11,8 @@ const disciplinasController = require("./app/controllers/DisciplinaController");
 const cursosController = require("./app/controllers/CursoController");
 const ciclosletivosController = require("./app/controllers/CiclosLetivosController");
 const turmasController = require("./app/controllers/TurmasController");
+const coordenadoresController = require("./app/controllers/CoordenadoresController");
+
 
 // CRUD DE PROFESSOR
 app.get("/professores", professoresController.listAll);
@@ -47,6 +49,12 @@ app.get("/turmas", turmasController.listAll);
 app.post("/turma/create", turmasController.createTurmas);
 app.put("/turma/:id", turmasController.alterTurma);
 app.delete("/turma/delete/:id", turmasController.deleteTurma);
+
+//CRUDO DE COORDENADORES
+app.get("/coordenadores", coordenadoresController.listAll);
+app.post("/coordenador/create", coordenadoresController.createCoordenador);
+app.put("/coordenador/:id", coordenadoresController.alterCoordenador);
+app.delete("/coordenador/delete/:id", coordenadoresController.deleteCoordenador);
 
 // ROTAS GERAIS
 app.get("/", authenticateToken, (req, res) => {
