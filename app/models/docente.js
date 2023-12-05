@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Docente.init({
     siape: DataTypes.STRING,
-    nome: DataTypes.STRING,
     user_id: DataTypes.INTEGER
   }, {
     sequelize,
