@@ -66,8 +66,7 @@ let refreshTokens = [];
 const loginUser = async (req, res) => {
   const { login, password } = req.body;
   if (login === undefined) {
-    res.status(201).json({ success: false, message: "Enter an email" });
-    return;
+    return res.status(400).json({ success: false, message: "Enter an email" });
   }
 
   try {
@@ -78,8 +77,7 @@ const loginUser = async (req, res) => {
     });
 
     if (!user || user === undefined) {
-      res.status(201).json({ success: false, message: "Email not registered" });
-      return;
+      return res.status(400).json({ success: false, message: "Email not registered" });
     }
 
     const hashedPassword = user.password;
@@ -94,14 +92,14 @@ const loginUser = async (req, res) => {
           process.env.REFRESH_TOKEN_SECRET
         );
         refreshTokens.push(refreshToken);
-        res.status(201).json({
+        return res.status(201).json({
           success: true,
           message: "User Successfully Created",
           accessToken: accessToken,
           refreshToken: refreshToken,
         });
       } else {
-        res.status(201).json({ success: false, message: "Wrong Password." });
+        return res.status(400).json({ success: false, message: "Wrong Password." });
       }
     });
   } catch (error) {
