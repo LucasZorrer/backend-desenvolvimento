@@ -47,7 +47,7 @@ module.exports = {
         references: { model: "docentes", key: "id" },
         onDelete: "CASCADE",
       },
-      docente_substitudo_id: {
+      docente_substituto_id: {
         type: Sequelize.INTEGER,
         references: { model: "docentes", key: "id" },
         onDelete: "CASCADE",

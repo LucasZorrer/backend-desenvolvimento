@@ -19,7 +19,7 @@ module.exports = {
         references: { model: "turmas", key: "id" },
         onDelete: "CASCADE",
       },
-      ano_letivo_id: {
+      ciclo_letivo_id: {
         type: Sequelize.INTEGER,
         references: { model: "Ciclo_letivos", key: "id" },
         onDelete: "CASCADE",
