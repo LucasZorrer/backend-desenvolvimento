@@ -22,21 +22,9 @@ const listAll = async (req, res) => {
   }
 };
 
-const listUnique = async (req, res) => {
-  try {
-    const professor = await Docente.findOne({
-      where: {
-        id: req.params.id,
-      },
-      include: {
-        model: User,
-      }
-    });
-
-    return res.json({ success: true, professor })
-  } catch (error) {
-    return res.status(400).json({ success: false, error })
-  }
+const listAll = async (req,res) => {
+    const professores = await Docente.findAll()
+    res.json({success:true, professores})
 };
 
 
@@ -105,48 +93,19 @@ const alterProfessor = async (req, res) => {
   if (!password || password == "") {
     return res.json({ success: false, message: "Complete the password field" });
   }
+};
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const alterUser = await User.update(
-    {
-      login,
-      password: hashedPassword,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  );
-
-  const alterDocente = await Docente.update(
-    {
-      siape,
-    },
-    {
-      where: {
-        user_id: req.params.id,
-      },
-    }
-  );
-
-  return res.json({ success: true, alterUser, alterDocente });
-
+const alterProfessor = () => {
+  console.log("alterando");
 };
 
 const deleteProfessor = async (req, res) => {
-  try {
-    const deleteDocente = await Docente.destroy({
+  const deleteProfessor = await User.destroy({
       where: {
-        id: req.params.id,
-      },
-    });
-
-    return res.json({ success: true, message: "Professor deleted" })
-  } catch (error) {
-    return res.status(400).json({ success: false, error })
-  }
+          id:req.params.id,
+      }
+  })
+  res.json({success:true, deleteProfessor})
 };
 
 module.exports = {

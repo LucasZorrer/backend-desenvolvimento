@@ -17,6 +17,8 @@ const ciclosletivosController = require("./app/controllers/CiclosLetivosControll
 const turmasController = require("./app/controllers/TurmasController");
 const coordenadoresController = require("./app/controllers/CoordenadoresController");
 const docentesciclosletivosController = require("./app/controllers/DocentesCiclosLetivos");
+const ofertasController = require("./app/controllers/OfertasController");
+const solicitacoesController = require("./app/controllers/SolicitacoesController");
 
 // CRUD DE PROFESSOR
 app.get("/professores", professoresController.listAll);
@@ -66,6 +68,18 @@ app.get("/docentes_ciclos_letivos", docentesciclosletivosController.listAll);
 app.post("/docente_ciclo_letivo/create", docentesciclosletivosController.createDocenteCicloLetivo);
 app.put("/docente_ciclo_letivo/:id", docentesciclosletivosController.alterDocenteCicloLetivo);
 app.delete("/docente_ciclo_letivo/delete/:id", docentesciclosletivosController.deleteDocenteCicloLetivo);
+
+//CRUD DE OFERTAS
+app.get("/ofertas", ofertasController.listAll);
+app.post("/oferta/create", ofertasController.createOferta);
+app.put("/oferta/:id", ofertasController.alterOferta);
+app.delete("/oferta/delete/:id", ofertasController.deleteOferta);
+
+//CRUD DE SOLICITACOES
+app.get("/solicitacoes", solicitacoesController.listAll);
+app.post("/solicitacao/create", solicitacoesController.createSolicitacoes);
+app.put("/solicitacao/:id", solicitacoesController.alterSolicitacao);
+app.delete("/solicitacao/delete/:id", solicitacoesController.deleteSolicitacao);
 
 // ROTAS GERAIS
 app.get("/", authenticateToken, (req, res) => {
