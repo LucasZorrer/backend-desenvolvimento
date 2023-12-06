@@ -2,7 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
+
 app.use(express.json());
+app.use(cors())
+
 
 // IMPORTAÇÃO DAS CONTROLLERS
 const professoresController = require("./app/controllers/ProfessorController");
@@ -16,6 +20,7 @@ const docentesciclosletivosController = require("./app/controllers/DocentesCiclo
 
 // CRUD DE PROFESSOR
 app.get("/professores", professoresController.listAll);
+app.get("/professores/:id", professoresController.listUnique);
 app.post("/professor/create", professoresController.createProfessor);
 app.put("/professor/:id", professoresController.alterProfessor);
 app.delete("/professor/delete/:id", professoresController.deleteProfessor);
