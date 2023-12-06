@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Oferta.init({
     docente_id: DataTypes.INTEGER,
     turma_id: DataTypes.INTEGER,
-    ciclo_letivo_id: DataTypes.INTEGER,
+    ano_letivo_id: DataTypes.INTEGER,
     disciplina_id: DataTypes.INTEGER,
   }, {
     sequelize,

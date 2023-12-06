@@ -2,9 +2,9 @@ const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const { Docente } = require("../models");
 
-const listAll = async (req,res) => {
-    const professores = await Docente.findAll()
-    res.json({success:true, professores})
+const listAll = async (req, res) => {
+  const professores = await Docente.findAll();
+  res.json({ success: true, professores });
 };
 
 const createProfessor = async (req, res) => {
@@ -56,17 +56,78 @@ const createProfessor = async (req, res) => {
   }
 };
 
-const alterProfessor = () => {
-  console.log("alterando");
+const alterProfessor = async (req, res) => {
+  try {
+    const { siape, login, password } = req.body;
+    const professorId = req.params.id;
+
+    if (!siape || siape === "") {
+      res.json({ success: false, message: "Complete the siape field" });
+    }
+    if (!login || login === "") {
+      res.json({ success: false, message: "Complete the login field" });
+    }
+    if (!password || password === "") {
+      res.json({ success: false, message: "Complete the password field" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const updatedUser = await User.update(
+      {
+        login,
+        password: hashedPassword,
+        papel: "Professor",
+      },
+      {
+        where: {
+          id: professorId,
+        },
+      }
+    );
+
+    if (updatedUser[0] === 1) {
+      const updatedDocente = await Docente.update(
+        {
+          siape,
+        },
+        {
+          where: {
+            user_id: professorId,
+          },
+        }
+      );
+
+      if (updatedDocente[0] === 1) {
+        res.json({ success: true, message: "Professor updated successfully" });
+      } else {
+        res.json({
+          success: false,
+          message: "Professor not found or not updated",
+        });
+      }
+    } else {
+      res.json({
+        success: false,
+        message: "Professor not found or not updated",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error,
+    });
+    console.log(error);
+  }
 };
 
 const deleteProfessor = async (req, res) => {
   const deleteProfessor = await User.destroy({
-      where: {
-          id:req.params.id,
-      }
-  })
-  res.json({success:true, deleteProfessor})
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.json({ success: true, deleteProfessor });
 };
 
 module.exports = {
